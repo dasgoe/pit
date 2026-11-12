@@ -95,17 +95,10 @@ video:focus-within{ outline:3px solid var(--ink); outline-offset:3px; }
   padding-block:.45rem;
 }
 .brand{ display:flex; align-items:center; text-decoration:none; min-height:44px; }
-/* merknaam: gewoon in kapitalen, geen logo */
-.brand-name{ font-family:var(--sans); font-size:.95rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; white-space:nowrap; }
-@media (min-width:1100px){ .brand-name{ font-size:1.05rem; } }
-@media (min-width:521px) and (max-width:600px){ .brand-name{ white-space:normal; width:min-content; line-height:1.2; } }
-@media (min-width:521px) and (max-width:900px){
-  .brand-name{ font-size:.82rem; letter-spacing:.14em; }
-  .brand::before{ width:2rem; height:2rem; font-size:.9rem; margin-right:.5rem; }
-}
-/* v8.7.24: EP-blokje voor de naam, zelfde beeld als de favicon */
-.brand::before{ content:"EP"; display:grid; place-items:center; flex:none; width:2.3rem; height:2.3rem; margin-right:.7rem;
-  background:var(--acc); color:var(--on-acc); font:800 1.05rem/1 var(--sans); letter-spacing:-.02em; }
+/* v8.7.26: logo = le bandeau. Oker label, schuin afgesneden, naam altijd op twee regels. Geen EP-blokje meer (favicon blijft EP). */
+.brand-name{ display:inline-block; width:min-content; white-space:normal; background:var(--acc); color:var(--on-acc);
+  font-family:var(--sans); font-size:.82rem; font-weight:700; line-height:1.25; letter-spacing:.24em; text-transform:uppercase;
+  padding:.75em 1.6em .75em 1em; clip-path:polygon(0 0,100% 0,calc(100% - .75em) 100%,0 100%); }
 .nav-links{ display:flex; align-items:center; gap:.15rem; list-style:none; margin:0; padding:0; }
 .nav-links a{
   display:flex; align-items:center; justify-content:center;
@@ -113,13 +106,12 @@ video:focus-within{ outline:3px solid var(--ink); outline-offset:3px; }
   text-decoration:none; font-size:.78rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
 }
 .nav-links a:hover{ background:rgba(56,40,24,.08); }
-.nav-links a[aria-current="page"]{ background:transparent; color:var(--acc); box-shadow:inset 0 -2px 0 var(--acc); } /* v8.7.25: geen vol blok meer, enkel EP is een blok */
+.nav-links a[aria-current="page"]{ background:transparent; color:var(--acc); box-shadow:inset 0 -2px 0 var(--acc); } /* v8.7.25: geen vol blok, onderstreping */
 .nav-links .nav-book a{ box-shadow:inset 0 0 0 1px var(--ink); }
 .nav-links .sep{ width:1px; height:1.2rem; background:var(--line); margin-inline:.35rem; }
 @media (max-width:520px){
   /* v8.7.21: « Erika Pittoors » op twee regels, zodat de kopbalk op gsm niet overloopt */
-  .brand-name{ font-size:.82rem; letter-spacing:.18em; white-space:normal; width:min-content; line-height:1.2; }
-  .brand::before{ width:2rem; height:2rem; font-size:.9rem; margin-right:.5rem; }
+  .brand-name{ font-size:.68rem; letter-spacing:.16em; padding:.5em 1.6em .5em .8em; }
   .nav{ gap:.5rem; }
   .nav-links a{ padding:.5rem .5rem; letter-spacing:.12em; }
   .nav-links .nav-book a{ letter-spacing:.06em; padding-inline:.6rem; }
@@ -511,8 +503,9 @@ main > .quote-band + .me.section-light{ margin-top:0; background-image:none; bac
 /* ===========================================================
    v8.7.5 — kaki: de accentkleur op de bandeau-elementen
    =========================================================== */
-.nav-links a[aria-current="page"]{ background:transparent; color:var(--acc); box-shadow:inset 0 -2px 0 var(--acc); } /* v8.7.25: geen vol blok meer, enkel EP is een blok */
-.nav-links .nav-book a{ box-shadow:inset 0 0 0 1px var(--acc); color:var(--acc); }
+.nav-links a[aria-current="page"]{ background:transparent; color:var(--acc); box-shadow:inset 0 -2px 0 var(--acc); } /* v8.7.25: geen vol blok, onderstreping */
+.nav-links .nav-book a{ box-shadow:inset 0 0 0 1px var(--acc); color:var(--acc); } /* v8.7.26: dun okerkader + pijl */
+.nav-links .nav-book a::after{ content:"→" / ""; margin-left:.4em; letter-spacing:0; }
 .veil, .band-label, .section-light .band-label, .ribbon, .safe, .section-black .safe, .offer-tag{ background:var(--acc); color:var(--on-acc); }
 .offers li.offer-framed{ border-color:var(--acc); }
 .btn-primary, .section-light .btn-primary, .section-light.page .btn-primary{ background:var(--acc); color:var(--on-acc); border-color:var(--acc); }
@@ -585,8 +578,7 @@ main > .quote-band:not(.quote-band--both) + .me.section-light{ padding-top:calc(
 }
 /* kleinste gsm's (320 px): kopbalk past op één regel */
 @media (max-width:359px){
-  .brand-name{ font-size:.74rem; letter-spacing:.14em; }
-  .brand::before{ width:1.8rem; height:1.8rem; font-size:.8rem; margin-right:.4rem; }
+  .brand-name{ font-size:.62rem; letter-spacing:.12em; padding:.5em 1.4em .5em .7em; }
   .nav{ gap:.35rem; }
   .nav-links a{ padding-inline:.4rem; letter-spacing:.08em; }
   .nav-links .nav-book a{ letter-spacing:.03em; padding-inline:.45rem; font-size:.72rem; }
