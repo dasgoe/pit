@@ -623,6 +623,8 @@ main > .quote-band:not(.quote-band--both) + .me.section-light{ padding-top:calc(
 .cal-ev-p{ grid-area:p; font-weight:700; text-align:right; white-space:nowrap; }
 .cal-ev-go{ grid-area:go; justify-self:end; font-size:.66rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; border-bottom:1px solid currentColor; }
 .cal-ev:hover .cal-ev-t, .cal-ev:focus-visible .cal-ev-t{ text-decoration:underline; text-underline-offset:3px; }
+/* uitleg per datum (2026-11-23): staat onder de klikbare regel, uitgelijnd met de titel */
+.cal-ev-x{ margin:-.3rem 0 0; padding:0 0 1rem 4.1rem; font-size:.9rem; line-height:1.55; color:var(--ink-soft); max-width:46ch; }
 .cal-note{ margin-top:clamp(3rem, 6vw, 4rem); padding-top:1.2rem; border-top:1px solid var(--line-light); line-height:1.9; }
 
 @media (min-width:760px){
